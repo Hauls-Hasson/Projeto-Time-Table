@@ -1,4 +1,4 @@
-# SHE
+# SHE (Software de Horario Escolar)
 ----------------------------------------------------------------------------------------------------------------------------
 ### Um gerador de horários inteligente que cria horários universitários usando  `Algoritmo Genético`.
   
