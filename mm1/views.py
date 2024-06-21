@@ -88,6 +88,7 @@ class Schedule:
             if classes[i].room.seating_capacity < int(classes[i].course.max_numb_students):  # Verifica capacidade da sala
                 self._numberOfConflicts += 1
 
+
             for unavailable_time in self._unavailableTimes:
                 if classes[i].instructor.name == unavailable_time['instructor'] and classes[i].meeting_time == unavailable_time['meeting_time']:
                     self._numberOfConflicts += 1
