@@ -87,6 +87,11 @@ class Schedule:
         for i in range(len(classes)):
             if classes[i].room.seating_capacity < int(classes[i].course.max_numb_students):  # Verifica capacidade da sala
                 self._numberOfConflicts += 1
+
+            for unavailable_time in self._unavailableTimes:
+                if classes[i].instructor.name == unavailable_time['instructor'] and classes[i].meeting_time == unavailable_time['meeting_time']:
+                    self._numberOfConflicts += 1
+
             for j in range(len(classes)):
                 if j >= i:
                     if (classes[i].meeting_time == classes[j].meeting_time) and \
@@ -206,6 +211,13 @@ def timetable(request):
     generation_num = 0
     population.get_schedules().sort(key=lambda x: x.get_fitness(), reverse=True)
     geneticAlgorithm = GeneticAlgorithm()
+
+    # acrescente a Lista de horários inviáveis 
+    Horarios_Inviaveis_de_Professores = 
+
+    for schedule in population.get_schedules():
+        schedule.set_unavailable_times(Horarios_Inviaveis_de_Professores)
+
     while population.get_schedules()[0].get_fitness() != 1.0:
         generation_num += 1
         print('\n> Geração #' + str(generation_num))
